@@ -52,12 +52,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        levao: {
-          teal: "hsl(var(--levao-teal))",
-          green: "hsl(var(--levao-green))",
-          gold: "hsl(var(--levao-gold))",
-          dark: "hsl(var(--levao-dark))",
-          light: "hsl(var(--levao-light))",
+        lepen: {
+          teal: "hsl(var(--lepen-teal))",
+          green: "hsl(var(--lepen-green))",
+          gold: "hsl(var(--lepen-gold))",
+          dark: "hsl(var(--lepen-dark))",
+          light: "hsl(var(--lepen-light))",
         },
       },
       borderRadius: {
