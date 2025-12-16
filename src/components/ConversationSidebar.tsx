@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MessageSquare, Plus, Trash2, LogOut, X, Search, Settings, Edit2, Check, Download, FileJson, FileText } from "lucide-react";
+import { MessageSquare, Plus, Trash2, LogOut, X, Search, Settings, Edit2, Check, Download, FileJson, FileText, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -21,6 +21,7 @@ interface ConversationSidebarProps {
   onDeleteConversation: (id: string) => void;
   onRenameConversation: (id: string, title: string) => void;
   onExportConversation: (id: string, format: "txt" | "json") => void;
+  onShowHomepage?: () => void;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -33,6 +34,7 @@ export const ConversationSidebar = ({
   onDeleteConversation,
   onRenameConversation,
   onExportConversation,
+  onShowHomepage,
   isOpen,
   onClose,
 }: ConversationSidebarProps) => {
@@ -222,6 +224,17 @@ export const ConversationSidebar = ({
           <div className="text-sm text-foreground/60 truncate">
             {user?.email}
           </div>
+          <Button
+            onClick={() => {
+              onShowHomepage?.();
+              onClose();
+            }}
+            variant="ghost"
+            className="w-full justify-start text-foreground/80 hover:text-foreground hover:bg-primary/10"
+          >
+            <Home className="w-4 h-4 mr-2" />
+            ← HOMEPAGE
+          </Button>
           <Button
             onClick={() => {
               navigate("/settings");

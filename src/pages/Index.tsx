@@ -222,6 +222,7 @@ const Index = () => {
         onDeleteConversation={handleDeleteConversation}
         onRenameConversation={handleRenameConversation}
         onExportConversation={handleExportConversation}
+        onShowHomepage={() => setShowLanding(true)}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />
