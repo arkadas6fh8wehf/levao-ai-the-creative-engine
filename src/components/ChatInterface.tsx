@@ -310,7 +310,7 @@ export const ChatInterface = ({ mode, conversationId, initialMessages = [], onSa
       id: Date.now().toString(),
       conversation_id: conversationId || "",
       role: "assistant",
-      content: "",
+      content: "Thinking...",
       created_at: new Date().toISOString(),
     };
     setMessages((prev) => [...prev, assistantMessage]);
@@ -673,14 +673,20 @@ export const ChatInterface = ({ mode, conversationId, initialMessages = [], onSa
                       alt="Generated"
                       className="rounded-lg max-w-full"
                     />
-                    <a
-                      href={message.image_url}
-                      download={`lepen-ai-image-${Date.now()}.png`}
+                    <button
+                      onClick={() => {
+                        const link = document.createElement('a');
+                        link.href = message.image_url!;
+                        link.download = `lepen-ai-image-${Date.now()}.png`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                      }}
                       className="absolute top-2 right-2 bg-background/80 hover:bg-background p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
                       title="Download image"
                     >
                       <Download className="w-4 h-4 text-foreground" />
-                    </a>
+                    </button>
                   </div>
                 )}
                 <MessageContent 
@@ -725,7 +731,7 @@ export const ChatInterface = ({ mode, conversationId, initialMessages = [], onSa
           </div>
         )}
         
-        {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
+        {isLoading && (
           <div className="flex justify-start">
             <div className="glass border-primary/20 px-5 py-3 rounded-2xl">
               <div className="flex items-center gap-2 text-muted-foreground">
